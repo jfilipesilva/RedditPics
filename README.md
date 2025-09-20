@@ -1,6 +1,6 @@
 # Reddit Pics
 
-This project is a basic Reddit app
+This project is a basic Reddit post listing app
 
 ## Table of Contents
 
