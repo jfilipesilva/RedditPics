@@ -1,6 +1,6 @@
 import { StatusBar, StyleSheet, View } from 'react-native'
 import QueryProvider from './contexts/QueryContext'
-import MainStack from './navigation/ MainStack'
+import MainStack from './navigation/MainStack'
 
 function App() {
   return (
