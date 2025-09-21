@@ -9,9 +9,10 @@ import {
   View,
 } from 'react-native'
 import useGetPosts, { PostType } from '../api/hooks/useGetPosts'
+import { MainStackScreenProps } from '../navigation/ MainStack'
 import { timeAgo } from '../utils/date'
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: MainStackScreenProps<'HomeScreen'>) => {
   const [postType, setPostType] = useState<PostType>('new')
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
     useGetPosts(postType)
@@ -36,6 +37,13 @@ const HomeScreen = () => {
     )
   }, [])
 
+  const handlePostPress = useCallback(
+    (postUrl: string) => {
+      navigation.navigate('PostScreen', { postUrl })
+    },
+    [navigation],
+  )
+
   return (
     <FlashList
       data={postsData}
@@ -53,7 +61,10 @@ const HomeScreen = () => {
             ? post.thumbnail_width / post.thumbnail_height
             : 1
         return (
-          <View style={{ padding: 10, borderBottomWidth: 1, flex: 1 }}>
+          <TouchableOpacity
+            style={{ padding: 10, borderBottomWidth: 1, flex: 1 }}
+            onPress={() => handlePostPress(post.url)}
+          >
             <Text>{post.title}</Text>
             {post.thumbnail && (
               <Image
@@ -69,7 +80,7 @@ const HomeScreen = () => {
               <Text style={styles.metaText}>{post.num_comments} comments</Text>
               <Text style={styles.metaText}>{timeAgo(post.created_utc)}</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         )
       }}
     />
