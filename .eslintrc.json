@@ -69,11 +69,6 @@
             "name": "react",
             "importNames": ["default"],
             "message": "Do not use React qualifier, use import deconstruction instead"
-          },
-          {
-            "name": "@testing-library/react-native",
-            "importNames": ["render"],
-            "message": "Please import from /utils/test-utils instead."
           }
         ]
       }
