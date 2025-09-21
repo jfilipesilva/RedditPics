@@ -26,7 +26,7 @@ describe('Post', () => {
       const { getByText } = renderComponent()
 
       expect(getByText(postData.title!)).toBeDefined()
-      expect(getByText(postData.author!)).toBeDefined()
+      expect(getByText(`u/${postData.author!}`)).toBeDefined()
       expect(getByText(`${postData.score} votes`)).toBeDefined()
       expect(getByText(`${postData.num_comments} comments`)).toBeDefined()
       expect(getByText('1 hour ago')).toBeDefined()
