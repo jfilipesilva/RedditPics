@@ -17,6 +17,7 @@ const Post = ({ post, onPostPress }: PostProps) => {
 
   return (
     <TouchableOpacity
+      accessibilityRole="button"
       style={{ padding: 10, borderBottomWidth: 1, flex: 1 }}
       onPress={() => onPostPress(post.url)}
     >
