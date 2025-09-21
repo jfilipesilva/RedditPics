@@ -6,7 +6,7 @@ import Typography from '../components/atoms/Typography/Typography'
 import Post from '../components/molecules/Post/Post'
 import TabsBar from '../components/molecules/TabsBar/TabsBar'
 import useTabBar from '../hooks/useTabBar'
-import { MainStackScreenProps } from '../navigation/ MainStack'
+import { MainStackScreenProps } from '../navigation/MainStack'
 
 const HomeScreen = ({ navigation }: MainStackScreenProps<'HomeScreen'>) => {
   const [isRefetching, setIsRefetching] = useState(false)

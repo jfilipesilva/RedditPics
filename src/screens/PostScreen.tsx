@@ -1,6 +1,6 @@
 import { ActivityIndicator, SafeAreaView, StyleSheet } from 'react-native'
 import WebView from 'react-native-webview'
-import { MainStackScreenProps } from '../navigation/ MainStack'
+import { MainStackScreenProps } from '../navigation/MainStack'
 
 const PostScreen = ({ route }: MainStackScreenProps<'PostScreen'>) => {
   const { postUrl } = route.params
