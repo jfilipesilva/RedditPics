@@ -3,19 +3,27 @@ import Typography from '../../atoms/Typography/Typography'
 
 type TabsBarProps = {
   tabsNames: string[]
+  tabSelected: string
   onSetPostType: (tabName: string) => void
 }
 
-const TabsBar = ({ tabsNames, onSetPostType }: TabsBarProps) => {
+const TabsBar = ({ tabsNames, tabSelected, onSetPostType }: TabsBarProps) => {
   return (
     <View style={styles.root}>
-      {tabsNames.map((name) => (
+      {tabsNames.map((tabName) => (
         <TouchableOpacity
-          key={name}
+          key={tabName}
           style={styles.tabButton}
-          onPress={() => onSetPostType(name)}
+          onPress={() => onSetPostType(tabName)}
         >
-          <Typography style={styles.tabName}>{name.toUpperCase()}</Typography>
+          <Typography
+            style={[
+              styles.tabName,
+              tabSelected === tabName && styles.activeTab,
+            ]}
+          >
+            {tabName.toUpperCase()}
+          </Typography>
         </TouchableOpacity>
       ))}
     </View>
@@ -24,6 +32,7 @@ const TabsBar = ({ tabsNames, onSetPostType }: TabsBarProps) => {
 
 const styles = StyleSheet.create({
   root: {
+    backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
@@ -32,6 +41,10 @@ const styles = StyleSheet.create({
   },
   tabName: {
     fontSize: 18,
+  },
+  activeTab: {
+    color: 'lightblue',
+    fontWeight: 'bold',
   },
 })
 

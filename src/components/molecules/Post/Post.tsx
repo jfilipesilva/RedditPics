@@ -18,41 +18,60 @@ const Post = ({ post, onPostPress }: PostProps) => {
   return (
     <TouchableOpacity
       accessibilityRole="button"
-      style={{ padding: 10, borderBottomWidth: 1, flex: 1 }}
+      style={styles.button}
       onPress={() => onPostPress(post.url)}
     >
-      <Typography>{post.title}</Typography>
-      {post.thumbnail && (
-        <Image
-          source={{ uri: post.thumbnail }}
-          style={{
-            aspectRatio: imageAspectRatio,
-          }}
-        />
-      )}
-      <View style={styles.metaContainer}>
-        <Typography style={styles.metaText}>{post.author}</Typography>
-        <Typography style={styles.metaText}>{post.score} votes</Typography>
-        <Typography style={styles.metaText}>
-          {post.num_comments} comments
-        </Typography>
-        <Typography style={styles.metaText}>
-          {timeAgo(post.created_utc)}
-        </Typography>
+      <Typography style={styles.title}>{post.title}</Typography>
+      <View style={styles.card}>
+        {post.thumbnail && (
+          <Image
+            source={{ uri: post.thumbnail }}
+            style={{
+              borderRadius: 20,
+              aspectRatio: imageAspectRatio,
+            }}
+          />
+        )}
+        <View style={styles.metaContainer}>
+          <Typography style={styles.metaText}>{`u/${post.author}`}</Typography>
+          <Typography style={styles.metaText}>{post.score} votes</Typography>
+          <Typography style={styles.metaText}>
+            {post.num_comments} comments
+          </Typography>
+          <Typography style={styles.metaText}>
+            {timeAgo(post.created_utc)}
+          </Typography>
+        </View>
       </View>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    marginBottom: 10,
+    fontWeight: 500,
+  },
+  card: {
+    borderRadius: 20,
+    backgroundColor: 'white',
+  },
   metaContainer: {
+    paddingVertical: 10,
     flexDirection: 'row',
-    marginTop: 6,
+    paddingHorizontal: 10,
+    justifyContent: 'space-between',
   },
   metaText: {
-    marginRight: 8,
-    color: 'grey',
     fontSize: 12,
+    color: 'grey',
+    marginRight: 8,
+  },
+  button: {
+    flex: 1,
+    padding: 10,
+    borderColor: 'lightgrey',
   },
 })
 
